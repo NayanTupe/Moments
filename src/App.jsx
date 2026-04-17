@@ -10,85 +10,47 @@ import UpgradePage from "./UpgradePage";
 import NoResponse from "./NoResponse";
 
 // Firebase
-import { db } from "./firebase";
-import { addDoc, collection } from "firebase/firestore";
+import { trackClick, trackAction } from "./utils/tracking";
+import { useRef } from "react";
 
 function Home() {
   const navigate = useNavigate();
   const [step, setStep] = useState(0);
 
+  const startTime = useRef(Date.now());
+
   // TRACK USER (ONLY ONCE)
-  const trackUser = async () => {
-    console.log("trackUser called");
-
-    const hasTracked = localStorage.getItem("tracked");
-    console.log("hasTracked:", hasTracked);
-
-    if (!hasTracked) {
-      try {
-        console.log("before addDoc");
-
-        const docRef = await addDoc(collection(db, "users"), {
-          action: "link_opened",
-          time: new Date(),
-          pageUrl: window.location.href,
-        });
-
-        console.log("after addDoc");
-        console.log("User tracked successfully", docRef.id);
-
-        localStorage.setItem("tracked", "true");
-      } catch (error) {
-        console.error("Firebase Error full:", error);
-        console.error("Firebase Error message:", error.message);
-        console.error("Firebase Error code:", error.code);
-      }
-    } else {
-      console.log("User already tracked");
-    }
-  };
-
-  // RUN ON PAGE LOAD
   useEffect(() => {
-    trackUser();
+    // Increment visit count
+    let count = parseInt(localStorage.getItem("visit_count") || "0");
+    count += 1;
+    localStorage.setItem("visit_count", count.toString());
+
+    trackAction("page_view", { visitCount: count });
   }, []);
 
-  // TRACK BUTTON CLICK
-  const trackClick = async (action, e) => {
-    try {
-      await addDoc(collection(db, "clicks"), {
-        action,
-        buttonText: e?.target?.innerText || "",
-        elementId: e?.target?.id || "",
-        elementClass: e?.target?.className || "",
-        pageUrl: window.location.href,
-        time: new Date(),
-      });
-
-      console.log("Tracked:", action);
-    } catch (err) {
-      console.error("Tracking Error:", err);
-    }
-  };
+  const getTimeSpent = () => Math.round((Date.now() - startTime.current) / 1000) + "s";
 
   // Yes button
   const handleYes = (e) => {
-    trackClick("YES_BUTTON", e);
+    trackClick("YES_BUTTON", e, { timeSpent: getTimeSpent(), noClickCount: step });
     navigate("/yes");
   };
 
   // No button
   const handleNo = (e) => {
-    trackClick("NO_BUTTON", e);
+    const nextStep = step + 1;
+    trackClick("NO_BUTTON", e, { 
+      timeSpent: getTimeSpent(), 
+      interactionCount: nextStep 
+    });
 
     setStep((prev) => {
-      const nextStep = prev + 1;
-
-      if (nextStep === 4) {
+      const actualNext = prev + 1;
+      if (actualNext === 4) {
         setTimeout(() => navigate("/no-response"), 1000);
       }
-
-      return nextStep > 4 ? 4 : nextStep;
+      return actualNext > 4 ? 4 : actualNext;
     });
   };
 
@@ -162,7 +124,10 @@ function YesPage() {
         initial={{ opacity: 0, x: 40 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ delay: 1.2, duration: 0.6 }}
-        onClick={() => navigate("/upgrade")}
+        onClick={(e) => {
+          trackClick("YES_SIDE_UPGRADE_BTN", e);
+          navigate("/upgrade");
+        }}
         whileHover={{ scale: 1.07 }}
         whileTap={{ scale: 0.95 }}
       >

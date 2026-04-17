@@ -1,12 +1,16 @@
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useRef } from "react";
+import { trackClick } from "./utils/tracking";
 
 function UpgradePage() {
   const navigate = useNavigate();
   const [step, setStep] = useState(0);
   const [finalMessage, setFinalMessage] = useState("");
   const [noPos, setNoPos] = useState({ x: 0, y: 0 });
+  const startTime = useRef(Date.now());
+
+  const getTimeSpent = () => Math.round((Date.now() - startTime.current) / 1000) + "s";
 
   const moveButton = () => {
     // Generate random movement within a reasonable range inside the card
@@ -15,17 +19,27 @@ function UpgradePage() {
     setNoPos({ x: randomX, y: randomY });
   };
 
-  const handleYes = () => {
+  const handleYes = (e) => {
+    trackClick("UPGRADE_YES_BUTTON", e, { 
+      timeSpent: getTimeSpent(), 
+      noChasedCount: step 
+    });
     setFinalMessage("That actually made me smile 😊 let’s see where this goes… 💫");
     setTimeout(() => {
       navigate("/yes");
     }, 4000);
   };
 
-  const handleNo = () => {
+  const handleNo = (e) => {
+    const nextStep = step + 1;
+    trackClick("UPGRADE_NO_BUTTON", e, { 
+      timeSpent: getTimeSpent(), 
+      interactionCount: nextStep 
+    });
+
     setStep((prev) => {
-      const next = prev + 1;
-      if (next >= 4) {
+      const actualNext = prev + 1;
+      if (actualNext >= 4) {
         setFinalMessage("No worries at all 😊 I understand and respect your decision.");
         setTimeout(() => {
           navigate("/yes");
@@ -33,7 +47,7 @@ function UpgradePage() {
         return 4;
       }
       moveButton(); // Jump to a new spot after each catch
-      return next;
+      return actualNext;
     });
   };
 
