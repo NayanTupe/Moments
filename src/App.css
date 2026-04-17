@@ -855,3 +855,147 @@ footer {
   letter-spacing: 10px;
   color: rgba(255, 255, 255, 0.4);
 }
+
+/* =========================================
+   📱 MOBILE RESPONSIVENESS (SMART FIX)
+   ========================================= */
+
+@media (max-width: 768px) {
+  /* Global Fixes */
+  body, html, .hero, .upgrade-page, .yes-container, .no-response-container {
+    overflow-y: auto !important; /* Allow scroll on mob if content overflows */
+    height: auto;
+    min-height: 100vh;
+  }
+
+  /* --- 🏠 HOME PAGE MOBILE --- */
+  .hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0 60px 0;
+    background: linear-gradient(135deg, #ff6b6b, #4a3c60);
+  }
+
+  /* Logo */
+  .logo-container {
+    position: relative;
+    height: auto;
+    margin-bottom: 20px;
+  }
+  .logo-img {
+    position: static;
+    display: block;
+    margin: 0 auto;
+    height: 60px;
+  }
+  .logo-title {
+    font-size: 32px;
+    margin-top: 10px;
+  }
+
+  /* Left Text (Now Center) */
+  .left-text {
+    position: relative;
+    top: 0;
+    left: 0;
+    transform: none;
+    max-width: 90%;
+    margin: 20px auto;
+    text-align: center;
+    padding: 15px;
+    font-size: 15px;
+    border-radius: 15px;
+  }
+
+  /* Right Image (Center) */
+  .right-image {
+    position: relative;
+    top: 0;
+    right: 0;
+    transform: none;
+    margin: 20px auto;
+  }
+  .right-image img {
+    width: 220px;
+    height: auto;
+    max-height: 380px;
+  }
+
+  /* Question Box */
+  .question-container {
+    position: relative;
+    bottom: 0;
+    left: 0;
+    transform: none;
+    width: 92%;
+    margin: 30px auto;
+    padding: 20px;
+  }
+  .question-container p {
+    font-size: 16px;
+  }
+
+  /* Fun Text Positioning */
+  .fun-text {
+    position: relative;
+    bottom: 0;
+    top: 0;
+    margin: 10px auto;
+    width: 90%;
+    font-size: 14px !important;
+  }
+
+  /* --- ✨ UPGRADE PAGE MOBILE --- */
+  .upgrade-card {
+    padding: 40px 25px;
+    width: 92%;
+  }
+  .upgrade-question {
+    font-size: 18px;
+  }
+  .upgrade-top-emoji {
+    font-size: 45px;
+  }
+  .upgrade-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  .upgrade-btn {
+    width: 100%;
+    max-width: 280px;
+  }
+
+  /* --- 💖 YES PAGE MOBILE --- */
+  .message-box {
+    width: 90%;
+    padding: 30px 20px;
+  }
+  .message-box h1 {
+    font-size: 24px;
+  }
+  .bear {
+    width: 150px;
+  }
+
+  /* Side Floating Button on Mobile */
+  .yes-side-btn {
+    padding: 12px 10px;
+    border-radius: 12px 0 0 12px;
+  }
+  .yes-side-arrow {
+    font-size: 30px;
+  }
+
+  /* --- 🤝 NO RESPONSE PAGE MOBILE --- */
+  .no-response-card {
+    padding: 40px 25px;
+    width: 92%;
+  }
+  .no-response-title {
+    font-size: 24px;
+  }
+  .no-response-text {
+    font-size: 15px;
+  }
+}

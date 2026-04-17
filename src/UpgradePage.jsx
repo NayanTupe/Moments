@@ -25,9 +25,6 @@ function UpgradePage() {
       noChasedCount: step 
     });
     setFinalMessage("That actually made me smile 😊 let’s see where this goes… 💫");
-    setTimeout(() => {
-      navigate("/yes");
-    }, 4000);
   };
 
   const handleNo = (e) => {
@@ -41,9 +38,6 @@ function UpgradePage() {
       const actualNext = prev + 1;
       if (actualNext >= 4) {
         setFinalMessage("No worries at all 😊 I understand and respect your decision.");
-        setTimeout(() => {
-          navigate("/yes");
-        }, 4000);
         return 4;
       }
       moveButton(); // Jump to a new spot after each catch
