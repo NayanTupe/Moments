@@ -6,6 +6,8 @@ import LeftText from "./LeftText";
 import RightImage from "./RightImage";
 import Question from "./Question";
 import Logo from "./Logo";
+import UpgradePage from "./UpgradePage";
+import NoResponse from "./NoResponse";
 
 // Firebase
 import { db } from "./firebase";
@@ -83,7 +85,7 @@ function Home() {
       const nextStep = prev + 1;
 
       if (nextStep === 4) {
-        setTimeout(() => navigate("/yes"), 1000);
+        setTimeout(() => navigate("/no-response"), 1000);
       }
 
       return nextStep > 4 ? 4 : nextStep;
@@ -98,20 +100,20 @@ function Home() {
       <RightImage />
 
       {step === 1 && <p className="fun-text" style={{ fontSize: "14px" }} >“काही हरकत नाही 😊
-मी फक्त honestly विचारलं होतं…” 🥺</p>}
-      
+        मी फक्त honestly विचारलं होतं…” 🥺</p>}
+
       {step === 2 && <p className="fun-text" style={{ fontSize: "12px" }} >“तुला uncomfortable वाटू नये म्हणूनच विचारलं 😊 Relax… काही pressure नाही.” 💭</p>}
-      
+
       {step === 3 && (
         <p className="fun-text" style={{ fontSize: "12px" }} >“तुझा answer मला मान्य आहे 👍 तू जशी comfortable आहेस तसंच राहूया…” (तरीही… कधीतरी ‘Yes’ वाटलं तर सांगशील 😄) 😌💖</p>
       )}
-      
+
       {step === 4 && (
         <p className="fun-text" style={{ fontSize: "18px" }}>
-         “Honestly… तुझ्याशी बोलायला आवडतं मला 😊 पण friends म्हणूनही ते पुरेसं आहे.”
+          “Honestly… तुझ्याशी बोलायला आवडतं मला 😊 पण friends म्हणूनही ते पुरेसं आहे.”
         </p>
       )}
-      
+
 
       <Question onYes={handleYes} onNo={handleNo} />
 
@@ -123,6 +125,8 @@ function Home() {
 }
 
 function YesPage() {
+  const navigate = useNavigate();
+
   return (
     <div className="yes-container">
       <audio autoPlay loop>
@@ -147,9 +151,23 @@ function YesPage() {
         <img src="/bear.gif" alt="cute bear" className="bear" />
 
         <p className="contact">
-         Honestly, I’ve always felt we could have a good vibe… 💕 <br />
-          
+          Honestly, I’ve always felt we could have a good vibe… 💕 <br />
+
         </p>
+      </motion.div>
+
+      {/* 👉 Side floating question button */}
+      <motion.div
+        className="yes-side-btn"
+        initial={{ opacity: 0, x: 40 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: 1.2, duration: 0.6 }}
+        onClick={() => navigate("/upgrade")}
+        whileHover={{ scale: 1.07 }}
+        whileTap={{ scale: 0.95 }}
+      >
+        <span className="yes-side-question">ek question? 😏</span>
+        <span className="yes-side-arrow">→</span>
       </motion.div>
     </div>
   );
@@ -160,6 +178,8 @@ function App() {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/yes" element={<YesPage />} />
+      <Route path="/upgrade" element={<UpgradePage />} />
+      <Route path="/no-response" element={<NoResponse />} />
     </Routes>
   );
 }
