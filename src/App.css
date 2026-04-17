@@ -1,0 +1,466 @@
+/* FULL SCREEN FIX */
+@import "tailwindcss";
+q html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  overflow: hidden; /* 🔥 NO SCROLL */
+  font-family: sans-serif;
+}
+
+/* MAIN HERO */
+.hero {
+  height: 100%;
+  background: linear-gradient(to right, pink, #243b55);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* 🔥 TOP + BOTTOM FIX */
+  align-items: center;
+}
+
+/* CENTER TEXT */
+header {
+  flex: 1; /* 🔥 center la gheun yeto */
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+/* TITLE */
+
+/* FOOTER */
+footer {
+  padding: 15px;
+  text-align: center;
+  color: white;
+  font-size: 14px;
+}
+
+/* FULL SCREEN */
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  font-family: sans-serif;
+}
+
+/* HERO */
+.hero {
+  height: 100%;
+  background: linear-gradient(to right, #ff6b6b, #243b55);
+  position: relative;
+}
+
+/* LEFT TEXT */
+.left-text {
+  position: absolute;
+  left: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: white;
+  max-width: 300px;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+/* CENTER TITLE */
+header {
+  position: absolute;
+  top: 20px; /* 🔥 वर space */
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+header h1 {
+  font-size: 48px;
+  text-align: center;
+  background: linear-gradient(to right, #ffffff, #dcdcdc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 2px;
+}
+
+/* FOOTER */
+footer {
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+  text-align: center;
+  color: white;
+  font-size: 14px;
+}
+
+.right-image {
+  position: absolute;
+  right: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+  overflow: visible; /* 🔥 IMPORTANT (hidden mule glow cut hotoy) */
+  border-radius: 15px;
+  cursor: pointer;
+
+  position: absolute;
+  z-index: 1; /* 🔥 add this */
+}
+
+/* GLOW BACKGROUND */
+.right-image::before {
+  content: "";
+  position: absolute;
+  inset: -40px; /* thoda jast spread */
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.4),
+    transparent 70%
+  );
+  filter: blur(2px) drop-shadow(0 0 10px rgba(0, 0, 0, 0.5));
+  z-index: -1;
+}
+
+.right-image img {
+  width: 280px;
+  height: 480px;
+  object-fit: cover;
+  object-position: top;
+  border-radius: 15px;
+  transition:
+    transform 0.6s ease,
+    filter 0.5s ease;
+  animation: none;
+}
+
+.right-image:hover img {
+  transform: scale(1.25);
+  filter: brightness(1.25);
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.question-container {
+  position: absolute;
+  bottom: 230px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  padding: 20px 30px;
+  border-radius: 15px;
+
+  background: rgba(255, 255, 255, 0.1); /* 🔥 glass */
+  backdrop-filter: blur(10px);
+
+  color: white;
+  text-align: center;
+  width: 80%;
+  max-width: 400px;
+}
+
+.buttons {
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.buttons button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.buttons button:first-child {
+  background: #ff4d6d;
+  color: white;
+}
+
+.buttons button:last-child {
+  background: #ccc;
+}
+
+.buttons button:hover {
+  transform: scale(1.1);
+}
+
+/* TYPING EFFECT */
+.typing {
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid white;
+
+  width: 0;
+  animation:
+    typing 3s steps(30, end) forwards,
+    blink 0.7s infinite;
+}
+
+/* typing animation */
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+/* cursor blink */
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
+
+.message-box {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+  backdrop-filter: blur(10px);
+
+  box-shadow: 0 0 40px rgba(255, 100, 150, 0.3); /* 💖 glow */
+}
+
+.next-page {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.message-box {
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  text-align: center;
+}
+
+.contact {
+  margin-top: 20px;
+  font-size: 18px;
+}
+
+.yes-container {
+  height: 100vh;
+  background: linear-gradient(to right, #ff9a9e, #fad0c4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Message Box */
+.message-box {
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.bear {
+  width: 200px;
+  margin: 20px 0;
+}
+
+/* Floating Hearts */
+.hearts span {
+  position: absolute;
+  font-size: 24px;
+  animation: float 6s infinite;
+}
+
+.hearts span:nth-child(1) {
+  left: 10%;
+  animation-delay: 0s;
+}
+.hearts span:nth-child(2) {
+  left: 30%;
+  animation-delay: 2s;
+}
+.hearts span:nth-child(3) {
+  left: 60%;
+  animation-delay: 4s;
+}
+.hearts span:nth-child(4) {
+  left: 80%;
+  animation-delay: 1s;
+}
+
+@keyframes float {
+  0% {
+    bottom: -50px;
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    bottom: 100%;
+    opacity: 0;
+  }
+}
+
+.fun-text {
+  position: absolute;
+
+  top: 120px; /* 🔥 adjust kar (Are you sure? cha exact level) */
+  /* left: 50%; */
+  transform: translateX(-50%);
+
+  background: linear-gradient(135deg, #ff9de2, #ff6fcf);
+  color: white;
+
+  padding: 12px 25px;
+  border-radius: 12px;
+
+  font-size: 1.4rem;
+  font-weight: 600;
+
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+
+  animation: fadeInUp 0.8s ease forwards;
+}
+/* Keyframes for fadeInUp animation */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.logo-container {
+  position: relative;
+  width: 100%;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 🔥 Logo left ला fix */
+.logo-img {
+  position: absolute;
+  left: 20px;
+  height: 70px;
+  object-fit: contain;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(255, 105, 180, 0.4);
+}
+
+/* 💖 Text center perfect */
+.logo-title {
+  font-size: 48px;
+  background: linear-gradient(to right, #ffffff, #dcdcdc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-top: 20px; /* 🔥 वर space */
+}
+
+
+/* 💬 Bottom Right Message Box */
+.message-input-box {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 320px;
+
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+
+  padding: 18px;
+  border-radius: 18px;
+
+  color: white;
+  font-size: 14px;
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  animation: slideUp 0.6s ease;
+}
+
+/* ✨ Title Text */
+.message-input-box p {
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+
+/* ✍️ Textarea */
+.message-input-box textarea {
+  width: 100%;
+  min-height: 70px;
+  resize: none;
+
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+
+  font-size: 13px;
+
+  background: rgba(255, 255, 255, 0.9);
+  color: #333;
+}
+
+/* 📩 Button */
+.message-input-box button {
+  margin-top: 10px;
+  width: 100%;
+
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+
+  background: linear-gradient(135deg, #ff4d6d, #ff8fa3);
+  color: white;
+
+  font-weight: 600;
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+/* 🔥 Hover Effect */
+.message-input-box button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(255, 77, 109, 0.5);
+}
+
+/* 📱 Small Screen */
+@media (max-width: 480px) {
+  .message-input-box {
+    width: 90%;
+    right: 5%;
+    bottom: 15px;
+  }
+}
+
+/* ✨ Animation */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
