@@ -120,9 +120,11 @@ footer {
   position: absolute;
   inset: -40px;
   /* thoda jast spread */
-  background: radial-gradient(circle,
-      rgba(255, 255, 255, 0.4),
-      transparent 70%);
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.4),
+    transparent 70%
+  );
   filter: blur(2px) drop-shadow(0 0 10px rgba(0, 0, 0, 0.5));
   z-index: -1;
 }
@@ -396,7 +398,6 @@ footer {
   /* 🔥 वर space */
 }
 
-
 /* 💬 Bottom Right Message Box */
 .message-input-box {
   position: fixed;
@@ -538,7 +539,6 @@ footer {
 }
 
 @keyframes side-bounce {
-
   0%,
   100% {
     transform: translateX(0);
@@ -548,7 +548,6 @@ footer {
     transform: translateX(4px);
   }
 }
-
 
 /* =========================================
    💫 UPGRADE QUESTION PAGE
@@ -563,7 +562,7 @@ footer {
   align-items: center;
   overflow: hidden;
   position: relative;
-  font-family: 'Segoe UI', sans-serif;
+  font-family: "Segoe UI", sans-serif;
 }
 
 /* floating particles */
@@ -637,7 +636,6 @@ footer {
 }
 
 @keyframes upgrade-float {
-
   0%,
   100% {
     transform: translateY(0) rotate(0deg);
@@ -807,7 +805,7 @@ footer {
   align-items: center;
   overflow: hidden;
   position: relative;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .no-response-card {
@@ -861,7 +859,6 @@ footer {
    ========================================= */
 
 @media (max-width: 768px) {
-
   /* Global Fixes */
   body,
   html,
@@ -899,7 +896,7 @@ footer {
   }
 
   .logo-title {
-    font-size: 32px;
+    font-size: 25px;
     margin-top: 10px;
   }
 
