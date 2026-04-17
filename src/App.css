@@ -379,7 +379,7 @@ footer {
 /* 🔥 Logo left ला fix */
 .logo-img {
   position: absolute;
-  left: 20px;
+  left: 25px;
   height: 70px;
   object-fit: contain;
   border-radius: 10px;
@@ -388,7 +388,7 @@ footer {
 
 /* 💖 Text center perfect */
 .logo-title {
-  font-size: 48px;
+  font-size: 20px;
   background: linear-gradient(to right, #ffffff, #dcdcdc);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -861,9 +861,16 @@ footer {
    ========================================= */
 
 @media (max-width: 768px) {
+
   /* Global Fixes */
-  body, html, .hero, .upgrade-page, .yes-container, .no-response-container {
-    overflow-y: auto !important; /* Allow scroll on mob if content overflows */
+  body,
+  html,
+  .hero,
+  .upgrade-page,
+  .yes-container,
+  .no-response-container {
+    overflow-y: auto !important;
+    /* Allow scroll on mob if content overflows */
     height: auto;
     min-height: 100vh;
   }
@@ -883,12 +890,14 @@ footer {
     height: auto;
     margin-bottom: 20px;
   }
+
   .logo-img {
     position: static;
     display: block;
     margin: 0 auto;
     height: 60px;
   }
+
   .logo-title {
     font-size: 32px;
     margin-top: 10px;
@@ -916,6 +925,7 @@ footer {
     transform: none;
     margin: 20px auto;
   }
+
   .right-image img {
     width: 220px;
     height: auto;
@@ -932,6 +942,7 @@ footer {
     margin: 30px auto;
     padding: 20px;
   }
+
   .question-container p {
     font-size: 16px;
   }
@@ -951,16 +962,20 @@ footer {
     padding: 40px 25px;
     width: 92%;
   }
+
   .upgrade-question {
     font-size: 18px;
   }
+
   .upgrade-top-emoji {
     font-size: 45px;
   }
+
   .upgrade-buttons {
     flex-direction: column;
     align-items: center;
   }
+
   .upgrade-btn {
     width: 100%;
     max-width: 280px;
@@ -971,9 +986,11 @@ footer {
     width: 90%;
     padding: 30px 20px;
   }
+
   .message-box h1 {
     font-size: 24px;
   }
+
   .bear {
     width: 150px;
   }
@@ -983,6 +1000,7 @@ footer {
     padding: 12px 10px;
     border-radius: 12px 0 0 12px;
   }
+
   .yes-side-arrow {
     font-size: 30px;
   }
@@ -992,9 +1010,11 @@ footer {
     padding: 40px 25px;
     width: 92%;
   }
+
   .no-response-title {
     font-size: 24px;
   }
+
   .no-response-text {
     font-size: 15px;
   }

@@ -40,9 +40,9 @@ function Home() {
   // No button
   const handleNo = (e) => {
     const nextStep = step + 1;
-    trackClick("NO_BUTTON", e, { 
-      timeSpent: getTimeSpent(), 
-      interactionCount: nextStep 
+    trackClick("NO_BUTTON", e, {
+      timeSpent: getTimeSpent(),
+      interactionCount: nextStep
     });
 
     setStep((prev) => {
@@ -80,7 +80,8 @@ function Home() {
       <Question onYes={handleYes} onNo={handleNo} />
 
       <footer>
-        <p>Created with feelings, not just code.</p>
+        <p>Created with feelings, Not just code.</p>
+        <p>© 2026 | Developed by Nayan Mahendra Tupe</p>
       </footer>
     </div>
   );

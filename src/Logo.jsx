@@ -4,7 +4,7 @@ function Logo() {
   return (
     <div className="logo-container">
      
-      <h1 className="logo-title">Moments Into Feelings</h1>
+      <h4 className="logo-title">Where Moments Turn Into Feelings</h4>
     </div>
   );
 }
