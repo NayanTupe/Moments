@@ -80,7 +80,7 @@ function Home() {
       <Question onYes={handleYes} onNo={handleNo} />
 
       <footer>
-        <p>Created with feelings, Not just code.</p>
+        <p>Created with feelings, Not just code..</p>
         <p>© 2026 | Developed by Nayan Mahendra Tupe</p>
       </footer>
     </div>
