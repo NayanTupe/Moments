@@ -29,29 +29,25 @@ function Home() {
     trackAction("page_view", { visitCount: count });
   }, []);
 
-  const getTimeSpent = () => Math.round((Date.now() - startTime.current) / 1000) + "s";
+  const getTimeSpent = () =>
+    Math.round((Date.now() - startTime.current) / 1000) + "s";
 
   // Yes button
   const handleYes = (e) => {
-    trackClick("YES_BUTTON", e, { timeSpent: getTimeSpent(), noClickCount: step });
+    trackClick("YES_BUTTON", e, {
+      timeSpent: getTimeSpent(),
+      noClickCount: step,
+    });
     navigate("/yes");
   };
 
   // No button
   const handleNo = (e) => {
-    const nextStep = step + 1;
     trackClick("NO_BUTTON", e, {
       timeSpent: getTimeSpent(),
-      interactionCount: nextStep
+      interactionCount: 1,
     });
-
-    setStep((prev) => {
-      const actualNext = prev + 1;
-      if (actualNext === 4) {
-        setTimeout(() => navigate("/no-response"), 1000);
-      }
-      return actualNext > 4 ? 4 : actualNext;
-    });
+    navigate("/no-response");
   };
 
   return (
@@ -61,21 +57,32 @@ function Home() {
       <LeftText />
       <RightImage />
 
-      {step === 1 && <p className="fun-text" style={{ fontSize: "14px" }} >“काही हरकत नाही 😊
-        मी फक्त honestly विचारलं होतं…” 🥺</p>}
+      {step === 1 && (
+        <p className="fun-text" style={{ fontSize: "14px" }}>
+          “काही हरकत नाही 😊 मी फक्त honestly विचारलं होतं…” 🥺
+        </p>
+      )}
 
-      {step === 2 && <p className="fun-text" style={{ fontSize: "12px" }} >“तुला uncomfortable वाटू नये म्हणूनच विचारलं 😊 Relax… काही pressure नाही.” 💭</p>}
+      {step === 2 && (
+        <p className="fun-text" style={{ fontSize: "12px" }}>
+          “तुला uncomfortable वाटू नये म्हणूनच विचारलं 😊 Relax… काही pressure
+          नाही.” 💭
+        </p>
+      )}
 
       {step === 3 && (
-        <p className="fun-text" style={{ fontSize: "12px" }} >“तुझा answer मला मान्य आहे 👍 तू जशी comfortable आहेस तसंच राहूया…” (तरीही… कधीतरी ‘Yes’ वाटलं तर सांगशील 😄) 😌💖</p>
+        <p className="fun-text" style={{ fontSize: "12px" }}>
+          “तुझा answer मला मान्य आहे 👍 तू जशी comfortable आहेस तसंच राहूया…”
+          (तरीही… कधीतरी ‘Yes’ वाटलं तर सांगशील 😄) 😌💖
+        </p>
       )}
 
       {step === 4 && (
         <p className="fun-text" style={{ fontSize: "18px" }}>
-          “Honestly… तुझ्याशी बोलायला आवडतं मला 😊 पण friends म्हणूनही ते पुरेसं आहे.”
+          “Honestly… तुझ्याशी बोलायला आवडतं मला 😊 पण friends म्हणूनही ते पुरेसं
+          आहे.”
         </p>
       )}
-
 
       <Question onYes={handleYes} onNo={handleNo} />
 
@@ -115,7 +122,6 @@ function YesPage() {
 
         <p className="contact">
           Honestly, I’ve always felt we could have a good vibe… 💕 <br />
-
         </p>
       </motion.div>
 
