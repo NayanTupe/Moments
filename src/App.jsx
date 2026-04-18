@@ -138,7 +138,9 @@ function YesPage() {
         whileHover={{ scale: 1.07 }}
         whileTap={{ scale: 0.95 }}
       >
-        <span className="yes-side-question">ek question? 😏</span>
+        <span className="yes-side-question" title="Click here!">
+          ek question? 🖱️😏
+        </span>
         <span className="yes-side-arrow">→</span>
       </motion.div>
     </div>
